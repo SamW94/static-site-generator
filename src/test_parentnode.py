@@ -120,9 +120,9 @@ class TestParentNode(unittest.TestCase):
         self.assertEqual(parent.to_html(), '<class href="https://google.com"><p target="_blank">Child 1.</p><b>Child 2.</b></class>')
 
     def test_nested_parent_node(self):
-        inner_children = [LeafNode("b", "Bold text")]
+        inner_children = [LeafNode(tag="b", value="Bold text")]
         inner_parent = ParentNode("div", inner_children)
-        outer_children = [inner_parent, LeafNode("i", "Italic")]
+        outer_children = [inner_parent, LeafNode(tag="i", value="Italic")]
         outer_parent = ParentNode("p", outer_children)
         # Test to_html output
         self.assertEqual(outer_parent.to_html(), '<p><div><b>Bold text</b></div><i>Italic</i></p>')
