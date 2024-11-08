@@ -22,7 +22,6 @@ class TestTextNode(unittest.TestCase):
     def test_url_none(self):
         node = TextNode("This is a text node", TextType.BOLD)
         self.assertIsNone(node.url)
-
     
 
 if __name__ == "__main__":

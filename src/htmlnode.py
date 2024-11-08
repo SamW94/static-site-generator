@@ -9,4 +9,15 @@ class HTMLNode():
     def to_html(self):
         raise NotImplementedError
     
-    
+    def __repr__(self):
+        return f"HTMLNode(tag={self.tag}, value={self.value}, children={self.children}, props={self.props})"
+
+    def props_to_html(self):
+        if self.props is None:
+            return ""
+        else:
+            list_formatted_attributes = []
+            for x in self.props:
+                list_formatted_attributes.append(f'{x}="{self.props[x]}"')
+            return_string = " ".join(list_formatted_attributes)
+        return f" {return_string.rstrip()}"
