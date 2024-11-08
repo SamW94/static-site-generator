@@ -2,7 +2,7 @@ import unittest
 
 from leafnode import LeafNode
 
-class TextLeafNode(unittest.TestCase):
+class TestLeafNode(unittest.TestCase):
 
     def test_nones(self):
         node = LeafNode("p", "This is a paragraph of text.")
