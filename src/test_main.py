@@ -1,7 +1,9 @@
 import unittest
+import split_images_and_links
+import split_nodes_delimiter
 from textnode import TextNode, TextType
 from leafnode import LeafNode
-from main import text_node_to_html
+from main import text_node_to_html, text_to_textnodes
 
 class TestTextNodeToHTML(unittest.TestCase):
 
@@ -62,6 +64,9 @@ class TestTextNodeToHTML(unittest.TestCase):
     def test_invalid_text_type(self):
         with self.assertRaises(AttributeError):
             TextNode("Invalid text type", TextType.NOTVALID)
+
+class TestTextToTextNodes(unittest.TestCase):
+    pass
 
 if __name__ == '__main__':
     unittest.main()

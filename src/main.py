@@ -1,5 +1,7 @@
 from textnode import TextNode, TextType
 from leafnode import LeafNode
+from split_images_and_links import split_nodes_image, split_nodes_link
+from split_nodes_delimiter import split_nodes_delimiter
 
 def text_node_to_html(text_node):
     if text_node.text_type == TextType.TEXT:
@@ -17,9 +19,12 @@ def text_node_to_html(text_node):
     else:
         raise AttributeError
 
+def text_to_textnodes(text):
+    pass
 
 def main():
     text_node_to_html()
+    text_to_textnodes()
 
 if __name__ == "__main__":
     main()
