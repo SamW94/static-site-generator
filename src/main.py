@@ -20,11 +20,18 @@ def text_node_to_html(text_node):
         raise AttributeError
 
 def text_to_textnodes(text):
-    pass
+    text_nodes = [TextNode(text, TextType.TEXT)]
+    split_node = split_nodes_delimiter(text_nodes, "**", TextType.BOLD)
+    split_node = split_nodes_delimiter(split_node, "*", TextType.ITALIC)
+    split_node = split_nodes_delimiter(split_node, "`", TextType.CODE)
+    split_node = split_nodes_image(split_node)
+    final_nodes = split_nodes_link(split_node)
+    return final_nodes
 
 def main():
-    text_node_to_html()
-    text_to_textnodes()
+    text = "This has **bold text but no closing delimiter."
+    text_nodes = text_to_textnodes(text)
+    print(text_nodes)
 
 if __name__ == "__main__":
     main()
