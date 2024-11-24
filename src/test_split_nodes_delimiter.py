@@ -22,7 +22,7 @@ class TestSplitNodesDelimiter(unittest.TestCase):
         self.assertEqual(new_nodes_list, expected_output_list)  
 
     def test_multiple_delimiters(self):
-        node = TextNode("This textnode contains a `code block` within. Here is a `second code block` just for shits and giggles.", TextType.TEXT)
+        node = TextNode("This textnode contains a `code block` within. Here is a `second code block` just because.", TextType.TEXT)
         new_nodes_list = split_nodes_delimiter([node], "`", TextType.CODE)
         expected_output_list = [TextNode("This textnode contains a ", TextType.TEXT), TextNode("code block", TextType.CODE), TextNode(" within. Here is a ", TextType.TEXT), TextNode("second code block", TextType.CODE), TextNode(" just for shits and giggles.", TextType.TEXT)]
         self.assertEqual(new_nodes_list, expected_output_list)
