@@ -1,0 +1,2 @@
+# markdown = "# This is a heading\n\n```This is a code block```\n\n>This is a quote block.\n>This is another quote.\n\n* This is the first list item in a list block\n* This is a list item\n* This is another list item\n\n1. This is an ordered list.\n2. This is the second item in the list.\n\nThis is another paragaph of text that contains **bold formatting,** and *italic formatting* and text with `code formatting` and text with ![image formatting](https://i.imgur.com/8HJoyoy.jpeg) and text with [link formatting](https://github.com/SamW94)."
+

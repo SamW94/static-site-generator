@@ -29,9 +29,7 @@ def text_to_textnodes(text):
     return final_nodes
 
 def main():
-    text = "This has **bold text but no closing delimiter."
-    text_nodes = text_to_textnodes(text)
-    print(text_nodes)
+    pass
 
 if __name__ == "__main__":
     main()
