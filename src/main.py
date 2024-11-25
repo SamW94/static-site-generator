@@ -2,6 +2,7 @@ from textnode import TextNode, TextType
 from leafnode import LeafNode
 from split_images_and_links import split_nodes_image, split_nodes_link
 from split_nodes_delimiter import split_nodes_delimiter
+from copy_from_static_to_public import copy_from_static_to_public
 
 def text_node_to_html(text_node):
     if text_node.text_type == TextType.TEXT:
@@ -29,7 +30,9 @@ def text_to_textnodes(text):
     return final_nodes
 
 def main():
-    pass
+    source_dir = "static"
+    destination_dir = "public"
+    copy_from_static_to_public(source_dir, destination_dir)
 
 if __name__ == "__main__":
     main()
