@@ -24,10 +24,3 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
                 else:
                     new_nodes.append(TextNode(segment, text_type))
     return new_nodes
-
-def main():
-    test_text_nodes = [TextNode("This has **bold text but no closing delimiter.", TextType.TEXT)]
-    split_nodes_delimiter(test_text_nodes, "**", TextType.TEXT)
-
-if __name__ == "__main__":
-    main()
