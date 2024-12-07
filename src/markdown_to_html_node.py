@@ -42,7 +42,8 @@ def markdown_to_html_node(markdown):
             list_items = block.split("\n")
             ul_children = []
             for list_item in list_items:
-                cleaned_item = list_item.lstrip("* ").strip()
+                regex = r'^[\*\- ]'
+                cleaned_item = re.sub(regex, "", list_item, count=1).strip()
                 item_children = text_to_children(cleaned_item)
                 li_node = ParentNode(tag="li", children=item_children)
                 ul_children.append(li_node)
