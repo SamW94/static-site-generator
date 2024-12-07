@@ -49,7 +49,7 @@ def split_nodes_image(old_nodes):
                     text_segment = original_text[start_index:first_occurence]
                     if len(text_segment) > 0:
                         new_nodes.append(TextNode(text_segment, TextType.TEXT))
-                    new_nodes.append(TextNode(alt_text, TextType.IMAGE, image_url))
+                    new_nodes.append(TextNode("", TextType.IMAGE, image_url, alt_text))
                     start_index = first_occurence + len(f"![{alt_text}]({image_url})")
                 if start_index < len(original_text):
                     text_segment = original_text[start_index:]

@@ -26,14 +26,10 @@ def generate_page(from_path, template_path, dest_path):
     # Use the markdown_to_html_node function to convert the markdown file to an HTML string. Use the extract_title function to get the title of the page.
     content = markdown_to_html_node(markdown).to_html()
     title = extract_title(markdown)
-    print(content)
-    print(title)
-    print(template)
 
     # Replace the {{ Title }} and {{ Content }} placeholders in the template file with the content and title strings
     new_template = template.replace("{{ Title }}", title)
     new_template = new_template.replace("{{ Content }}", content)
-    print(new_template)
 
     # Write the new full HTML page to a file at dest_path  
     destination_file = open(dest_path, mode='w')

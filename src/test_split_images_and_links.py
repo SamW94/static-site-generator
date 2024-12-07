@@ -2,7 +2,7 @@ from split_images_and_links import split_nodes_image, split_nodes_link
 from textnode import TextNode, TextType
 import unittest
 
-class TextSplitImagesAndLinks(unittest.TestCase):
+class TestSplitImagesAndLinks(unittest.TestCase):
 
     def test_no_markdown_links(self):
         node = TextNode("This text has no links or images in it.", TextType.TEXT)
@@ -37,7 +37,7 @@ class TextSplitImagesAndLinks(unittest.TestCase):
     def test_markdown_images_single(self):
         node = TextNode("This is text with a ![rick roll](https://i.imgur.com/aKaOqIh.gif)", TextType.TEXT)
         new_nodes_list = split_nodes_image([node])
-        expected_output = [TextNode("This is text with a ", TextType.TEXT), TextNode("rick roll", TextType.IMAGE, "https://i.imgur.com/aKaOqIh.gif")]
+        expected_output = [TextNode("This is text with a ", TextType.TEXT), TextNode("", TextType.IMAGE, "https://i.imgur.com/aKaOqIh.gif", "rick roll")]
         self.assertEqual(new_nodes_list, expected_output)
 
     def test_markdown_links_multiple(self):
@@ -49,7 +49,7 @@ class TextSplitImagesAndLinks(unittest.TestCase):
     def test_markdown_images_multiple(self):
         node = TextNode("This is text with a ![rick roll](https://i.imgur.com/aKaOqIh.gif) and ![obi wan](https://i.imgur.com/fJRm4Vk.jpeg)", TextType.TEXT)
         new_nodes_list = split_nodes_image([node])
-        expected_output = [TextNode("This is text with a ", TextType.TEXT), TextNode("rick roll", TextType.IMAGE, "https://i.imgur.com/aKaOqIh.gif"), TextNode(" and ", TextType.TEXT), TextNode("obi wan", TextType.IMAGE, "https://i.imgur.com/fJRm4Vk.jpeg")]
+        expected_output = [TextNode("This is text with a ", TextType.TEXT), TextNode("", TextType.IMAGE, "https://i.imgur.com/aKaOqIh.gif", "rick roll"), TextNode(" and ", TextType.TEXT), TextNode("", TextType.IMAGE, "https://i.imgur.com/fJRm4Vk.jpeg", "obi wan")]
         self.assertEqual(new_nodes_list, expected_output)
 
     def test_markdown_links_multiple_adjacent(self):
@@ -61,7 +61,7 @@ class TextSplitImagesAndLinks(unittest.TestCase):
     def test_markdown_images_multiple_adjacent(self):
         node = TextNode("Here are two images adjacent to one another: ![image1](https://image1.test)![image2](https://image2.test)", TextType.TEXT)
         new_nodes_list = split_nodes_image([node])
-        expected_output = [TextNode("Here are two images adjacent to one another: ", TextType.TEXT), TextNode("image1", TextType.IMAGE, "https://image1.test"), TextNode("image2", TextType.IMAGE, "https://image2.test")]
+        expected_output = [TextNode("Here are two images adjacent to one another: ", TextType.TEXT), TextNode("", TextType.IMAGE, "https://image1.test", "image1"), TextNode("", TextType.IMAGE, "https://image2.test", "image2")]
         self.assertEqual(new_nodes_list, expected_output)
 
 if __name__ == "__main__":
