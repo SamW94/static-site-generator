@@ -3,7 +3,7 @@ import os
 from markdown_to_html_node import markdown_to_html_node
 from extract_title import extract_title
 
-def generate_page(from_path, template_path, dest_path):
+def generate_page(from_path, template_path, dest_path, basepath):
     # Print a message to the console.
     print(f"Generating page from {from_path} to {dest_path} using {template_path}.")
     
@@ -30,6 +30,8 @@ def generate_page(from_path, template_path, dest_path):
     # Replace the {{ Title }} and {{ Content }} placeholders in the template file with the content and title strings
     new_template = template.replace("{{ Title }}", title)
     new_template = new_template.replace("{{ Content }}", content)
+    new_template = new_template.replace('href="/', f'href="{basepath}')
+    new_template = new_template.replace('src="/', f'src="{basepath}')
 
     # Write the new full HTML page to a file at dest_path  
     destination_file = open(dest_path, mode='w')
